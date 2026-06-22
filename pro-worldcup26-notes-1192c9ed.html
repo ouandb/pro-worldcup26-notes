@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯观赛指南 – 赛事数据与知识平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1f2937;
+      line-height: 1.6;
+      padding: 24px 20px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: white;
+      border-radius: 28px;
+      padding: 48px 32px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e5e9f0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1b33;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .hero .meta-line {
+      display: inline-block;
+      background: #eef1f5;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2c3e50;
+    }
+
+    /* 卡片通用 */
+    .card-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 28px 32px;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: #111827;
+      letter-spacing: -0.01em;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 20px 0 8px;
+      color: #1e293b;
+    }
+
+    .card p {
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      color: #2d3a4a;
+    }
+
+    .card li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .feature-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid #e7edf5;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .feature-item span {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    /* 说明区 & faq 混合 */
+    .faq-item {
+      border-bottom: 1px solid #e6ecf4;
+      padding: 14px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #0b1e33;
+    }
+
+    .faq-a {
+      color: #3b4a5e;
+      font-size: 0.95rem;
+    }
+
+    .bottom-links {
+      margin-top: 48px;
+      padding: 28px 0 20px;
+      border-top: 1px solid #dce2ec;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px 32px;
+      font-size: 0.95rem;
+    }
+
+    .bottom-links a {
+      color: #1e3a5f;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .bottom-links a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    .inline-link {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #a0b8e0;
+    }
+
+    .inline-link:hover {
+      border-bottom-style: solid;
+      color: #0b2d6b;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6b7a8f;
+      font-size: 0.85rem;
+      margin: 32px 0 12px;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 16px 14px;
+      }
+      .hero {
+        padding: 32px 18px 28px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 22px 18px 24px;
+      }
+      .bottom-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- hero -->
+  <section class="hero">
+    <h1>世界杯档案 · 赛历与知识库</h1>
+    <p class="sub">从历史对阵到规则演变，从经典战役到未来抽签——围绕<a href="https://pro-worldcup26.com" class="inline-link">世界杯</a>搭建的查询与延伸阅读平台，适合日常翻阅、赛前对照和深度探索。</p>
+    <span class="meta-line">📅 覆盖 1930–2026 ｜ 赛事数据持续更新</span>
+  </section>
+
+  <!-- 优势区 + 特色卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>不只是赛程表</h2>
+      <p>我们尝试把「世界杯」拆解成可检索的单元：每届分组、每轮淘汰赛、球员与教练档案，以及裁判规则变化的时间线。无论你关注的是下一届主办国，还是三十年前的决赛细节，都可以从这里开始。</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <strong>多维度对照</strong>
+          <span>同时查看两届赛事的小组积分、射手榜、场均进球等指标</span>
+        </div>
+        <div class="feature-item">
+          <strong>延伸词条</strong>
+          <span>每支历史冠军队、金靴得主附背景介绍与相关记录</span>
+        </div>
+        <div class="feature-item">
+          <strong>赛历导航</strong>
+          <span>从预选赛到决赛周，按洲际、年份、轮次筛选</span>
+        </div>
+        <div class="feature-item">
+          <strong>规则速查</strong>
+          <span>越位、换人、小组排名规则变更与现行条款</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 说明区：日常查询场景 -->
+    <div class="card">
+      <h2>日常查询与对照</h2>
+      <p>很多球迷习惯在赛季间歇回顾往届经典，或者在抽签揭晓后比较不同小组的纸面实力。这个平台的设计初衷，就是让你能快速定位某一届的完整对阵，或者查看两支球队在<a href="https://pro-worldcup26.com" class="inline-link">世界杯</a>历史上的交手记录。</p>
+      <p>比如你想知道：1998 年法国队与 2018 年法国队的阵容重叠度？或者同一小组在 2002 年和 2022 年的积分分布有何异同？——这些都可以在页面内切换年份、搜索队伍名称来完成。</p>
+      <p style="margin-top: 12px;">另外，页面还整理了「每届之最」——进球最多的比赛、观众人数最多的决赛、连续届数进球球员等，作为延伸阅读的入口。</p>
+    </div>
+
+    <!-- FAQ 摘要 + 额外提示 -->
+    <div class="card">
+      <h2>常见问题 · 摘要</h2>
+      <div class="faq-item">
+        <div class="faq-q">❓ 2026 年世界杯的赛制是否有变化？</div>
+        <div class="faq-a">扩军至 48 队，小组分为 12 组每组 4 队，前两名及 8 个成绩最好的小组第三进入 32 强淘汰赛。具体分组及比赛场地可参考平台内的「2026 专题」。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 如何快速找到某位球员的世界杯出场数据？</div>
+        <div class="faq-a">在搜索栏输入球员姓氏或常用名（中文/英文均可），会列出该球员参加的届数、出场时间、进球以及红黄牌记录。数据覆盖 1970 年之后的主要统计项。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 平台上的历史数据权威性如何？</div>
+        <div class="faq-a">数据主要来自国际足联官方比赛报告、各足协历史公告以及公开的赛事统计，经多源交叉核对后整理。有疑问的条目会标注「待核实」并提供参考来源。</div>
+      </div>
+      <div class="faq-item" style="border-bottom: none; padding-bottom: 0;">
+        <div class="faq-q">❓ 是否可以下载赛程表或导出数据？</div>
+        <div class="faq-a">部分表格支持复制或导出为 CSV（小组赛、淘汰赛树状图）。PDF 版赛历正在测试中，预计 2025 年下半年开放。</div>
+      </div>
+    </div>
+
+    <!-- 底部链接 + 一句话引导 -->
+    <div class="bottom-links">
+      <a href="https://pro-worldcup26.com">世界杯</a>
+      <a href="https://pro-worldcup26.com">世界杯</a>
+      <a href="https://pro-worldcup26.com">世界杯</a>
+      <a href="https://pro-worldcup26.com">世界杯</a>
+      <a href="https://pro-worldcup26.com">世界杯</a>
+    </div>
+    <div class="footer-note">
+      — 日常查询 · 对照阅读 · 围绕 <a href="https://pro-worldcup26.com" class="inline-link">世界杯</a> 的知识型导航 —
+    </div>
+  </div>
+</div>
+</body>
+</html>
